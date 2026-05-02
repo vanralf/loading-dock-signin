@@ -37,7 +37,14 @@ right behavior based on which column was edited.
 ## Files
 
 - `LoadingDockSign.xlsm` — the workbook
-- `Module1.bas` — exported VBA source for the change handler
+- `module1.bas` — exported VBA source for the change handler
+
+## Architecture
+
+1. **Event Listener** - Monitors the sheet for specific input (Worksheet_Change) and pauses standard Excel events to prevent recursive loops.
+2. **Routing & Validation** - Identifies input context and routes logic accordingly.
+3. **Database Query** - In the event of a new user, queries the ContactList table to flag duplicates.
+4. **State Execution** - Updates UI and appends timestamps automatically.
 
 ## What I learned
 
